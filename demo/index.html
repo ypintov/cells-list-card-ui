@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>cells-list-card-ui demo</title>
+    <script src="../build/webcomponents-loader.js"></script>
+    <script src="../build/scoping-ambients-shim.min.js"></script>
+    <script src="../build/custom-style-interface.min.js"></script>
+    <script>
+      {
+        const _customElementsDefine = window.customElements.define;
+        window.customElements.define = (n, cl, conf) => {
+          if (customElements.get(n)) {
+            console.warn(`${n} has been defined twice`);
+          } else {
+            _customElementsDefine.call(window.customElements, n, cl, conf);
+          }
+        };
+      }
+    </script>
+    <script defer src="../build/component.js"></script>
+    <script type="module" crossorigin="use-credentials">
+      import '../build/demo-build.js';
+    </script>
+  </head>
+
+  <body>
+    <bbva-core-demo-helper events='["view-detail-card"]'>
+      <bbva-core-demo-case heading="Basic" description="Default specs">
+        <template>
+          <cells-list-card-ui id="component"></cells-list-card-ui>
+          <script>
+            const component = document.querySelector('#component');
+            let data = [
+              {
+                id: 'czJUS1BMTVg5YmpTdlJHbQ',
+                number: '4919108224726441',
+                currency: 'PEN',
+                productName: 'VISA CERO',
+                amountGranted: 2834.14,
+                amountAvailable: 0.0,
+              },
+
+              {
+                id: 'UGltw5E0NUFKc1Zjb2F2enQ',
+                number: '4919108224726433',
+                currency: 'PEN',
+                productName: 'VISA CLASICA',
+                amountGranted: 1000.0,
+                amountAvailable: 50.0,
+              },
+            ];
+
+            //data = [];
+            component.data = data;
+          </script>
+        </template>
+      </bbva-core-demo-case>
+    </bbva-core-demo-helper>
+  </body>
+</html>
